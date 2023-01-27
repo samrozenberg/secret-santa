@@ -1,8 +1,15 @@
 // Specific CSS for your home-page
 .home-page-left {
   width: 50%;
+  border-right: 1px solid grey;
+  padding: 12px
 }
 
 .home-page-right {
   width: 50%;
+  padding: 12px
+}
+
+.santa-homepage-image {
+  width: -webkit-fill-available;
 }

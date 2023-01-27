@@ -8,6 +8,12 @@ import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 
+import { addParticipant } from './event_participants';
+
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+document.addEventListener('DOMContentLoaded', () => {
+  addParticipant();
+});

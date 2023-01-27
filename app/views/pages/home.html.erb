@@ -1,12 +1,86 @@
 <div class="d-flex justify content-between">
   <div class="home-page-left">
     <h1>Secret Santa Generator</h1>
+    <%= image_tag "secret_santa.PNG", class: "santa-homepage-image" %>
   </div>
   <div class="home-page-right">
     <% if !user_signed_in? %>
       <p>Log In to easily create and see all your Secret Santa events !</p>
     <% else %>
-      <p>Here the Generator</p>
+      <h2>Generate a new Secret Santa Event !</h2>
+      <%= simple_form_for(@event) do |f| %>
+        <div>
+          <%= f.input :title, required: true %>
+          <%= f.input :max_amount, required: true %>
+          <%= f.simple_fields_for :participants do |p| %>
+            <h5>Participant</h5>
+            <div class="d-flex justify-content-around participant-field">
+              <%= p.input :name, label: "Participant Name", input_html: {value: current_user.name} %>
+              <%= p.input :email, label: "Participant Email", input_html: {value: current_user.email} %>
+            </div>
+          <% end %>
+          <%= f.simple_fields_for :participants do |p| %>
+            <h5>Participant</h5>
+            <div class="d-flex justify-content-around participant-field">
+              <%= p.input :name, label: "Participant Name" %>
+              <%= p.input :email, label: "Participant Email" %>
+            </div>
+          <% end %>
+          <%= f.simple_fields_for :participants do |p| %>
+            <h5>Participant</h5>
+            <div class="d-flex justify-content-around participant-field">
+              <%= p.input :name, label: "Participant Name" %>
+              <%= p.input :email, label: "Participant Email" %>
+            </div>
+          <% end %>
+          <%= f.simple_fields_for :participants do |p| %>
+            <h5>Participant</h5>
+            <div class="d-flex justify-content-around participant-field">
+              <%= p.input :name, label: "Participant Name" %>
+              <%= p.input :email, label: "Participant Email" %>
+            </div>
+          <% end %>
+          <%= f.simple_fields_for :participants do |p| %>
+            <h5>Participant</h5>
+            <div class="d-flex justify-content-around participant-field">
+              <%= p.input :name, label: "Participant Name" %>
+              <%= p.input :email, label: "Participant Email" %>
+            </div>
+          <% end %>
+          <%= f.simple_fields_for :participants do |p| %>
+            <h5>Participant</h5>
+            <div class="d-flex justify-content-around participant-field">
+              <%= p.input :name, label: "Participant Name" %>
+              <%= p.input :email, label: "Participant Email" %>
+            </div>
+          <% end %>
+          <%= f.simple_fields_for :participants do |p| %>
+            <h5>Participant</h5>
+            <div class="d-flex justify-content-around participant-field">
+              <%= p.input :name, label: "Participant Name" %>
+              <%= p.input :email, label: "Participant Email" %>
+            </div>
+          <% end %>
+          <%= f.simple_fields_for :participants do |p| %>
+            <h5>Participant</h5>
+            <div class="d-flex justify-content-around participant-field">
+              <%= p.input :name, label: "Participant Name" %>
+              <%= p.input :email, label: "Participant Email" %>
+            </div>
+          <% end %>
+          <div id="participant-template" style="display:none;">
+            <%= f.simple_fields_for :participants do |p| %>
+              <h5>Participant</h5>
+              <div class="d-flex justify-content-around participant-field">
+                <%= p.input :name, label: "Participant Name" %>
+                <%= p.input :email, label: "Participant Email" %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <%= f.submit %>
+      <% end %>
+      <button class= "add-participant">Add Participant</button>
     <% end %>
   </div>
 </div>
