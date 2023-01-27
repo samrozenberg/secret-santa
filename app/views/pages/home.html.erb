@@ -12,71 +12,28 @@
         <div>
           <%= f.input :title, required: true %>
           <%= f.input :max_amount, required: true %>
-          <%= f.simple_fields_for :participants do |p| %>
-            <h5>Participant</h5>
-            <div class="d-flex justify-content-around participant-field">
-              <%= p.input :name, label: "Participant Name", input_html: {value: current_user.name} %>
-              <%= p.input :email, label: "Participant Email", input_html: {value: current_user.email} %>
-            </div>
-          <% end %>
-          <%= f.simple_fields_for :participants do |p| %>
-            <h5>Participant</h5>
-            <div class="d-flex justify-content-around participant-field">
-              <%= p.input :name, label: "Participant Name" %>
-              <%= p.input :email, label: "Participant Email" %>
-            </div>
-          <% end %>
-          <%= f.simple_fields_for :participants do |p| %>
-            <h5>Participant</h5>
-            <div class="d-flex justify-content-around participant-field">
-              <%= p.input :name, label: "Participant Name" %>
-              <%= p.input :email, label: "Participant Email" %>
-            </div>
-          <% end %>
-          <%= f.simple_fields_for :participants do |p| %>
-            <h5>Participant</h5>
-            <div class="d-flex justify-content-around participant-field">
-              <%= p.input :name, label: "Participant Name" %>
-              <%= p.input :email, label: "Participant Email" %>
-            </div>
-          <% end %>
-          <%= f.simple_fields_for :participants do |p| %>
-            <h5>Participant</h5>
-            <div class="d-flex justify-content-around participant-field">
-              <%= p.input :name, label: "Participant Name" %>
-              <%= p.input :email, label: "Participant Email" %>
-            </div>
-          <% end %>
-          <%= f.simple_fields_for :participants do |p| %>
-            <h5>Participant</h5>
-            <div class="d-flex justify-content-around participant-field">
-              <%= p.input :name, label: "Participant Name" %>
-              <%= p.input :email, label: "Participant Email" %>
-            </div>
-          <% end %>
-          <%= f.simple_fields_for :participants do |p| %>
-            <h5>Participant</h5>
-            <div class="d-flex justify-content-around participant-field">
-              <%= p.input :name, label: "Participant Name" %>
-              <%= p.input :email, label: "Participant Email" %>
-            </div>
-          <% end %>
-          <%= f.simple_fields_for :participants do |p| %>
-            <h5>Participant</h5>
-            <div class="d-flex justify-content-around participant-field">
-              <%= p.input :name, label: "Participant Name" %>
-              <%= p.input :email, label: "Participant Email" %>
-            </div>
-          <% end %>
-          <div id="participant-template" style="display:none;">
+          <div class="simple-fields-div">
             <%= f.simple_fields_for :participants do |p| %>
               <h5>Participant</h5>
               <div class="d-flex justify-content-around participant-field">
-                <%= p.input :name, label: "Participant Name" %>
-                <%= p.input :email, label: "Participant Email" %>
+                <%= p.input :name, label: "Participant Name", input_html: {value: current_user.name} %>
+                <%= p.input :email, label: "Participant Email", input_html: {value: current_user.email} %>
               </div>
             <% end %>
           </div>
+          <% index = 44 %>
+          <% 20.times do %>
+            <div class="simple-fields-div d-none c-<%= index %>">
+              <%= f.simple_fields_for :participants do |p| %>
+                <h5>Participant</h5>
+                <div class="d-flex justify-content-around participant-field">
+                  <%= p.input :name, label: "Participant Name" %>
+                  <%= p.input :email, label: "Participant Email" %>
+                </div>
+              <% end %>
+            </div>
+            <% index +=1  %>
+          <% end %>
         </div>
         <%= f.submit %>
       <% end %>

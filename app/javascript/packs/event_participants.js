@@ -1,20 +1,25 @@
 export const addParticipant = () => {
   const addParticipantButton = document.querySelector('.add-participant');
-  const participantTemplate = document.querySelector('#participant-template');
+  const participantSimpleFields = document.querySelector('.simple-fields-div');
 
+  let index = 44
 
   addParticipantButton.addEventListener('click', function () {
     console.log("Hello");
-    const newField = participantTemplate.cloneNode(true);
-    newField.style.display = 'block';
+    // const newField = participantSimpleFields.cloneNode(true);
+    // newField.classList.add(`${index}`);
 
-    const fields = participantTemplate.parentNode.querySelectorAll(".participant-field");
-    console.log(fields);
+    const divToDisplay = document.querySelector(`.c-${index}`);
+    console.log(divToDisplay);
+    divToDisplay.classList.remove("d-none");
+    // const fields = participantTemplate.parentNode.querySelectorAll(".participant-field");
+    // console.log(fields);
     // const lastField = fields[fields.length - 1];
     // console.log(lastField);
     // participantTemplate.parentNode.insertBefore(newField, lastField.nextSibling);
 
-    participantTemplate.parentNode.appendChild(newField);
+    // participantSimpleFields.parentNode.appendChild(newField);
     // participantTemplate.parentNode.insertBefore(newFields, parentNode.childNodes[0]);
+    index ++;
   });
 }

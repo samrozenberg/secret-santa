@@ -2,35 +2,39 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
     @event.user = current_user
-    @event.save
-    @all_participants = @event.participants - @event.participants.where(name: '')
+    if @event.valid?
+      @event.save
+      @all_participants = @event.participants - @event.participants.where(name: '')
+      @participants = @all_participants.shuffle
 
-    @participants = @all_participants.shuffle
-
-    pairs = []
-
-    @participants.each_with_index do |giver, index|
-      receiver = @participants[index + 1] || @participants.first
-      pairs << [giver, receiver]
-    end
-
-    pairs.each do |pair|
-      created_pair = Pair.create(event: @event)
-      pair.each_with_index do |participant, index|
-        if index == 0
-          @giver_pair = ParticipantPair.create(participant: participant, pair: created_pair, giver: true)
-        else
-          @receiver_pair = ParticipantPair.create(participant: participant, pair: created_pair, giver: false)
-        end
+      pairs = []
+      @participants.each_with_index do |giver, index|
+        receiver = @participants[index + 1] || @participants.first
+        pairs << [giver, receiver]
       end
 
-      @giver = @giver_pair.participant
-      @receiver = @receiver_pair.participant
+      pairs.each do |pair|
+        created_pair = Pair.create(event: @event)
+        pair.each_with_index do |participant, index|
+          if index == 0
+            @giver_pair = ParticipantPair.create(participant: participant, pair: created_pair, giver: true)
+          else
+            @receiver_pair = ParticipantPair.create(participant: participant, pair: created_pair, giver: false)
+          end
+        end
 
-      EventMailer.gift_assignment_email(@event, @giver, @receiver).deliver_now
+        @giver = @giver_pair.participant
+        @receiver = @receiver_pair.participant
+
+        EventMailer.gift_assignment_email(@event, @giver, @receiver).deliver_now
+      end
+
+      redirect_to event_path(@event)
+    else
+      flash[:error] = "Validation failed"
+      redirect_to root_path
     end
 
-    redirect_to event_path(@event)
   end
 
   def index

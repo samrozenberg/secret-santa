@@ -1,31 +1,33 @@
-<div class="d-flex justify-content-between">
-  <h1 class="mb-4"><%= @event.title %></h1>
-  <%= link_to "Back to Events", events_path(@event), class: "btn btn-danger mb-4"%>
-</div>
+<div class="page-wrapper">
+  <div class="d-flex justify-content-between">
+    <h1 class="mb-4"><%= @event.title %></h1>
+    <%= link_to "Back to Events", events_path(@event), class: "btn btn-danger mb-4"%>
+  </div>
 
-<h4>Maximum Spending Amount: <%= @event.max_amount %>€</h4>
+  <h4>Maximum Spending Amount: <%= @event.max_amount %>€</h4>
 
-<h3>Events' Participants:</h3>
-<ul>
-  <% @participants.each do |participant| %>
-    <li>Name: <%=participant.name%> / Email: <%=participant.email%></li>
-  <% end %>
-</ul>
+  <h3>Events' Participants:</h3>
+  <ul>
+    <% @participants.each do |participant| %>
+      <li>Name: <%=participant.name%> / Email: <%=participant.email%></li>
+    <% end %>
+  </ul>
 
-<h3>Pairs Assignments:</h3>
+  <h3>Pairs Assignments:</h3>
 
-<table class="table index-table table-striped ">
-  <tr>
-    <th>Giver</th>
-    <th>Receiver</th>
-  </tr>
-
-
-  <% @event.pairs.each do |pair| %>
+  <table class="table index-table table-striped ">
     <tr>
-      <td><%= pair.participant_pairs.where(giver: true)[0].participant.name %></td>
-      <td><%= pair.participant_pairs.where(giver: false)[0].participant.name %></td>
+      <th>Giver</th>
+      <th>Receiver</th>
     </tr>
-  <% end %>
 
-</table>
+
+    <% @event.pairs.each do |pair| %>
+      <tr>
+        <td><%= pair.participant_pairs.where(giver: true)[0].participant.name %></td>
+        <td><%= pair.participant_pairs.where(giver: false)[0].participant.name %></td>
+      </tr>
+    <% end %>
+
+  </table>
+</div>
