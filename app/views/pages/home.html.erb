@@ -1,2 +1,45 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="d-flex justify content-between home-page">
+  <div class="home-page-left">
+    <h1>Secret Santa Generator</h1>
+    <%= image_tag "secret_santa.PNG", class: "santa-homepage-image" %>
+  </div>
+  <div class="home-page-right">
+    <% if !user_signed_in? %>
+      <p class="mt-5"><i>Log In to easily create and see all your Secret Santa events !</i></p>
+    <% else %>
+      <h2>Generate a new Secret Santa Event !</h2>
+      <%= simple_form_for(@event) do |f| %>
+        <div>
+          <%= f.input :title, required: true %>
+          <%= f.input :max_amount, required: true %>
+          <div class="simple-fields-div">
+            <%= f.simple_fields_for :participants do |p| %>
+              <h5>Participant</h5>
+              <div class="d-flex justify-content-around participant-field">
+                <%= p.input :name, label: "Participant Name", input_html: {value: current_user.name} %>
+                <%= p.input :email, label: "Participant Email", input_html: {value: current_user.email} %>
+              </div>
+            <% end %>
+          </div>
+          <% index = 44 %>
+          <% 20.times do %>
+            <div class="simple-fields-div d-none c-<%= index %>">
+              <%= f.simple_fields_for :participants do |p| %>
+                <h5>Participant</h5>
+                <div class="d-flex justify-content-around participant-field">
+                  <%= p.input :name, label: "Participant Name" %>
+                  <%= p.input :email, label: "Participant Email" %>
+                </div>
+              <% end %>
+            </div>
+            <% index +=1  %>
+          <% end %>
+        </div>
+        <%= f.submit class: 'btn btn-danger' %>
+      <% end %>
+      <div class="button-wrapper">
+        <button class= "add-participant btn btn-secondary">+ Add Participant</button>
+      </div>
+    <% end %>
+  </div>
+</div>

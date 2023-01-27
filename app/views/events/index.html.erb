@@ -1,0 +1,28 @@
+<div class="page-wrapper">
+  <h1 class="text-center">All your Events</h1>
+
+  <table class="table index-table table-striped ">
+    <tr>
+      <th>Creation Date</th>
+      <th>Title</th>
+      <th>Maximum Spending Amount</th>
+      <th>Number of Participants</th>
+      <th>Open Events</th>
+    </tr>
+
+    <% @events.each do |event| %>
+      <tr>
+        <td><%= event.created_at.strftime("%e %^b %Y")  %></td>
+        <td><%= event.title %></td>
+        <td><%= event.max_amount %>€</td>
+        <td><%= event.participants.count %></td>
+        <td>
+          <%= link_to event_path(event), target: :_blank do %>
+            <i class="fas fa-arrow-alt-circle-right"></i>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+
+  </table>
+</div>
