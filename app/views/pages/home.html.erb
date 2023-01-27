@@ -1,11 +1,11 @@
-<div class="d-flex justify content-between">
+<div class="d-flex justify content-between home-page">
   <div class="home-page-left">
     <h1>Secret Santa Generator</h1>
     <%= image_tag "secret_santa.PNG", class: "santa-homepage-image" %>
   </div>
   <div class="home-page-right">
     <% if !user_signed_in? %>
-      <p>Log In to easily create and see all your Secret Santa events !</p>
+      <p class="mt-5"><i>Log In to easily create and see all your Secret Santa events !</i></p>
     <% else %>
       <h2>Generate a new Secret Santa Event !</h2>
       <%= simple_form_for(@event) do |f| %>
@@ -35,9 +35,11 @@
             <% index +=1  %>
           <% end %>
         </div>
-        <%= f.submit %>
+        <%= f.submit class: 'btn btn-danger' %>
       <% end %>
-      <button class= "add-participant">Add Participant</button>
+      <div class="button-wrapper">
+        <button class= "add-participant btn btn-secondary">+ Add Participant</button>
+      </div>
     <% end %>
   </div>
 </div>

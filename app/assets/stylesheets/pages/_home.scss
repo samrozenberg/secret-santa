@@ -16,4 +16,20 @@
 
 body {
   background: linear-gradient(white, #fcb4b4);
+  height: 100vh;
+}
+
+.button-wrapper {
+  width: 100%;
+  button {
+    margin-left: 60%;
+  }
+}
+
+.pages-home {
+  height: fit-content!important;
+}
+
+.events-show {
+  height: fit-content !important;
 }

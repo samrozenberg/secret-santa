@@ -1,11 +1,11 @@
 <div class="page-wrapper">
-  <h1>All your Events</h1>
+  <h1 class="text-center">All your Events</h1>
 
   <table class="table index-table table-striped ">
     <tr>
       <th>Creation Date</th>
       <th>Title</th>
-      <th>Mamimum Spending Amount</th>
+      <th>Maximum Spending Amount</th>
       <th>Number of Participants</th>
       <th>Open Events</th>
     </tr>
@@ -14,7 +14,7 @@
       <tr>
         <td><%= event.created_at.strftime("%e %^b %Y")  %></td>
         <td><%= event.title %></td>
-        <td><%= event.max_amount %></td>
+        <td><%= event.max_amount %>€</td>
         <td><%= event.participants.count %></td>
         <td>
           <%= link_to event_path(event), target: :_blank do %>
