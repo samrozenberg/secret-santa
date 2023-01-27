@@ -1,6 +1,12 @@
-<h1>Secret Santa Generator</h1>
-<% if !user_signed_in? %>
-  <p>Log In to easily create and see all your Secret Santa events !</p>
-<% else %>
-  <p>You are logged in !</p>
-<% end %>
+<div class="d-flex justify content-between">
+  <div class="home-page-left">
+    <h1>Secret Santa Generator</h1>
+  </div>
+  <div class="home-page-right">
+    <% if !user_signed_in? %>
+      <p>Log In to easily create and see all your Secret Santa events !</p>
+    <% else %>
+      <p>Here the Generator</p>
+    <% end %>
+  </div>
+</div>

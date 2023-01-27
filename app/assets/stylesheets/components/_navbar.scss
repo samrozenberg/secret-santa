@@ -12,7 +12,7 @@
 }
 
 .logged-in {
-  font-size: 12px;
+  font-size: 14px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -20,4 +20,8 @@
 
 .profiler-results {
   display: none;
+}
+
+.nav-link {
+  margin: 0 16px;
 }
