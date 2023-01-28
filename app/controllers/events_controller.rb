@@ -31,7 +31,7 @@ class EventsController < ApplicationController
 
       redirect_to event_path(@event)
     else
-      flash[:error] = "Validation failed"
+      flash[:error] = "Validation failedd"
       redirect_to root_path
     end
 
