@@ -5,11 +5,11 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address: 'smtp.gmail.com',
+    address: 'smtp.live.com',
     port: 587,
-    user_name: ENV['GMAIL_USERNAME'],
-    password: ENV['GMAIL_PASSWORD'],
-    authentication: 'plain',
+    user_name: ENV['HOTMAIL_USERNAME'],
+    password: ENV['HOTMAIL_PASSWORD'],
+    authentication: :login,
     enable_starttls_auto: true
   }
   # Code is not reloaded between requests.
