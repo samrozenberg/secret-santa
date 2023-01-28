@@ -1,9 +1,17 @@
 require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
-  config.action_mailer.default_url_options = { host: "http://TODO_PUT_YOUR_DOMAIN_HERE" }
+  config.action_mailer.default_url_options = { host: ENV['HOST_URL'] }
   # Settings specified here will take precedence over those in config/application.rb.
-
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address: 'smtp.live.com',
+    port: 587,
+    user_name: ENV['HOTMAIL_USERNAME'],
+    password: ENV['HOTMAIL_PASSWORD'],
+    authentication: :login,
+    enable_starttls_auto: true
+  }
   # Code is not reloaded between requests.
   config.cache_classes = true
 
