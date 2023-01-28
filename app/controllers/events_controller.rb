@@ -26,12 +26,12 @@ class EventsController < ApplicationController
         @giver = @giver_pair.participant
         @receiver = @receiver_pair.participant
 
-        # EventMailer.gift_assignment_email(@event, @giver, @receiver).deliver_now
+        EventMailer.gift_assignment_email(@event, @giver, @receiver).deliver_now
       end
 
       redirect_to event_path(@event)
     else
-      flash[:error] = "Validation failedd"
+      flash[:error] = 'Validation failed'
       redirect_to root_path
     end
 
